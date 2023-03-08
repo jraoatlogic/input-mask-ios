@@ -76,7 +76,8 @@ open class MaskedTextFieldDelegate: NSObject, UITextFieldDelegate {
         }
     }
     
-    open weak var listener: MaskedTextFieldDelegateListener?
+    // need @objc here so that nativescript can find it under swift 4, see https://github.com/NativeScript/ios-jsc/issues/257#issuecomment-133451921
+    @objc open weak var listener: MaskedTextFieldDelegateListener?
     
     public init(format: String) {
         self._maskFormat = format
@@ -90,7 +91,8 @@ open class MaskedTextFieldDelegate: NSObject, UITextFieldDelegate {
         self.init(format: "")
     }
     
-    open func put(text: String, into field: UITextField) {
+    // need @objc here so that nativescript can find it under swift 4, see https://github.com/NativeScript/ios-jsc/issues/257#issuecomment-133451921
+    @objc open func put(text: String, into field: UITextField) {
         let result: Mask.Result = self.mask.apply(
             toText: CaretString(
                 string: text,
